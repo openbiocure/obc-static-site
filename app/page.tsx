@@ -353,8 +353,14 @@ export default function Home() {
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto animate-fade-in animate-stagger-2">
             Be part of the revolution in biotechnology and healthcare innovation.
           </p>
-          <Button size="lg" variant="secondary" className="text-lg px-8 py-3 hover-lift animate-bounce-in animate-stagger-3 glow-on-hover">
-            Get Started Today
+          <Button size="lg" variant="secondary" className="text-lg px-8 py-3 hover-lift animate-bounce-in animate-stagger-3 glow-on-hover" asChild>
+            <a 
+              href="https://platform.openbiocure.ai/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Get Started Today
+            </a>
           </Button>
         </div>
       </section>

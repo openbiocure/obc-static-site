@@ -38,8 +38,14 @@ export function Navigation() {
             <Button variant="outline" size="sm">
               Sign In
             </Button>
-            <Button size="sm">
-              Get Started
+            <Button size="sm" asChild>
+              <a 
+                href="https://platform.openbiocure.ai/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Get Started
+              </a>
             </Button>
           </div>
         </div>
