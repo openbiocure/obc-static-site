@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/navigation";
+import ArchitectureDiagram from "@/components/architecture-diagram";
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -132,6 +133,11 @@ export default function Home() {
               scalable platform for healthcare innovation.
             </p>
           </div>
+
+          {/* Add the diagram here */}
+          <div className="mb-16">
+            <ArchitectureDiagram />
+          </div>
           
           <div className="grid lg:grid-cols-3 gap-8">
             <Card className="border-0 shadow-xl bg-gradient-to-br from-blue-600 to-blue-700 text-white animate-slide-up animate-stagger-3 hover-lift">
@@ -147,11 +153,13 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
+              <p>Connectors to the following sources:</p>
                 <ul className="space-y-2 text-sm text-blue-100">
-                  <li>• RESTful APIs & GraphQL</li>
-                  <li>• Multi-language support</li>
-                  <li>• Authentication & security</li>
-                  <li>• Real-time data streaming</li>
+                  <li>• PubMed</li>
+                  <li>• Europe PMC</li>
+                  <li>• ClinicalTrials.gov</li>
+                  <li>• arXiv</li>
+                  <li>• and more...</li>
                 </ul>
               </CardContent>
             </Card>
