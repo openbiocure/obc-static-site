@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <main className="min-h-screen bg-gradient-to-br from-[#00a3e0]/10 via-white to-[#00239c]/10">
       <Navigation />
       
       {/* Hero Section */}
@@ -53,7 +53,7 @@ export default function Home() {
               />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 animate-bounce-in animate-stagger-1">
-              <span className="text-blue-600">Open</span>BioCure
+              <span className="bg-gradient-to-r from-[#00239c] via-[#001e62] to-[#e76900] bg-clip-text text-transparent">OpenBioCure</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in animate-stagger-2">
               Advancing healthcare through innovative biotechnology solutions and collaborative research.
@@ -61,14 +61,14 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl px-10 py-4 shadow-xl font-semibold tracking-wide hover:from-blue-700 hover:to-blue-800 hover:shadow-2xl transition"
+                className="bg-gradient-to-r from-[#00239c] to-[#001e62] text-white rounded-xl px-10 py-4 shadow-xl font-semibold tracking-wide hover:from-[#001e62] hover:to-[#00239c] hover:shadow-2xl transition"
               >
                 Learn More
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-blue-700 text-blue-700 rounded-xl px-10 py-4 shadow font-semibold tracking-wide hover:bg-blue-700 hover:text-white hover:shadow-xl transition"
+                className="border-2 border-[#e76900] text-[#e76900] rounded-xl px-10 py-4 shadow font-semibold tracking-wide hover:bg-[#e76900] hover:text-white hover:shadow-xl transition"
               >
                 Get Involved
               </Button>
@@ -92,8 +92,8 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow animate-slide-up animate-stagger-3 hover-lift">
               <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 animate-scale-in">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-[#00239c]/10 rounded-lg flex items-center justify-center mb-4 animate-scale-in">
+                  <svg className="w-6 h-6 text-[#00239c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -106,8 +106,8 @@ export default function Home() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow animate-slide-up animate-stagger-4 hover-lift">
               <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 animate-scale-in">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-[#e76900]/10 rounded-lg flex items-center justify-center mb-4 animate-scale-in">
+                  <svg className="w-6 h-6 text-[#e76900]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
@@ -120,8 +120,8 @@ export default function Home() {
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow animate-slide-up animate-stagger-5 hover-lift">
               <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 animate-scale-in">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-[#00a3e0]/10 rounded-lg flex items-center justify-center mb-4 animate-scale-in">
+                  <svg className="w-6 h-6 text-[#00a3e0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Architecture Section */}
-      <section id="architecture" className="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
+      <section id="architecture" className="py-20 bg-gradient-to-r from-[#00a3e0]/5 to-[#00239c]/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4 text-sm font-medium animate-bounce-in animate-stagger-1">
@@ -157,7 +157,7 @@ export default function Home() {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-blue-600 to-blue-700 text-white animate-slide-up animate-stagger-3 hover-lift">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#00239c] to-[#001e62] text-white animate-slide-up animate-stagger-3 hover-lift">
               <CardHeader>
                 <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4 animate-scale-in">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -165,13 +165,13 @@ export default function Home() {
                   </svg>
                 </div>
                 <CardTitle className="text-white">SDK Framework</CardTitle>
-                <CardDescription className="text-blue-100">
+                <CardDescription className="text-[#00a3e0]">
                   Comprehensive development kit for building healthcare applications and integrations.
                 </CardDescription>
               </CardHeader>
               <CardContent>
               <p>Connectors to the following sources:</p>
-                <ul className="space-y-2 text-sm text-blue-100">
+                <ul className="space-y-2 text-sm text-[#00a3e0]">
                   <li>• PubMed</li>
                   <li>• Europe PMC</li>
                   <li>• ClinicalTrials.gov</li>
@@ -181,7 +181,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-green-600 to-green-700 text-white animate-slide-up animate-stagger-4 hover-lift">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#e76900] to-[#d65a00] text-white animate-slide-up animate-stagger-4 hover-lift">
               <CardHeader>
                 <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4 animate-scale-in">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,12 +189,12 @@ export default function Home() {
                   </svg>
                 </div>
                 <CardTitle className="text-white">DataLake Platform</CardTitle>
-                <CardDescription className="text-green-100">
+                <CardDescription className="text-orange-100">
                   Centralized data repository with advanced analytics and machine learning capabilities.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm text-green-100">
+                <ul className="space-y-2 text-sm text-orange-100">
                   <li>• Petabyte-scale storage</li>
                   <li>• Real-time processing</li>
                   <li>• Advanced analytics</li>
@@ -203,7 +203,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-purple-600 to-purple-700 text-white animate-slide-up animate-stagger-5 hover-lift">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#00a3e0] to-[#0093c7] text-white animate-slide-up animate-stagger-5 hover-lift">
               <CardHeader>
                 <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-4 animate-scale-in">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,12 +211,12 @@ export default function Home() {
                   </svg>
                 </div>
                 <CardTitle className="text-white">Multi-Agent System</CardTitle>
-                <CardDescription className="text-purple-100">
+                <CardDescription className="text-cyan-100">
                   Intelligent agents working together to solve complex healthcare challenges.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm text-purple-100">
+                <ul className="space-y-2 text-sm text-cyan-100">
                   <li>• Autonomous agents</li>
                   <li>• Collaborative learning</li>
                   <li>• Task orchestration</li>
@@ -238,7 +238,7 @@ export default function Home() {
       </section>
 
       {/* AI Agents Section */}
-      <section id="agents" className="py-20 bg-gradient-to-r from-indigo-50 to-blue-50">
+      <section id="agents" className="py-20 bg-gradient-to-r from-[#00a3e0]/5 to-[#00239c]/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4 text-sm font-medium animate-bounce-in animate-stagger-1">
@@ -257,8 +257,8 @@ export default function Home() {
             <div className="space-y-6 animate-slide-in-left animate-stagger-4">
               <div className="space-y-4">
                 <div className="flex items-start space-x-4 animate-fade-in animate-stagger-5">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 animate-scale-in">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 bg-[#00239c]/10 rounded-full flex items-center justify-center flex-shrink-0 animate-scale-in">
+                    <svg className="w-5 h-5 text-[#00239c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
@@ -269,8 +269,8 @@ export default function Home() {
                 </div>
                 
                 <div className="flex items-start space-x-4 animate-fade-in animate-stagger-6">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 animate-scale-in">
-                    <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 bg-[#e76900]/10 rounded-full flex items-center justify-center flex-shrink-0 animate-scale-in">
+                    <svg className="w-5 h-5 text-[#e76900]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </div>
@@ -281,8 +281,8 @@ export default function Home() {
                 </div>
                 
                 <div className="flex items-start space-x-4 animate-fade-in">
-                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 animate-scale-in">
-                    <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 bg-[#00a3e0]/10 rounded-full flex items-center justify-center flex-shrink-0 animate-scale-in">
+                    <svg className="w-5 h-5 text-[#00a3e0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
                   </div>
@@ -294,14 +294,14 @@ export default function Home() {
               </div>
               
               <div className="pt-4">
-                <Button size="lg" className="w-full sm:w-auto hover-lift animate-pulse-slow">
+                <Button size="lg" className="w-full sm:w-auto hover-lift animate-pulse-slow bg-[#00239c] hover:bg-[#001e62]">
                   Explore Our Agents
                 </Button>
               </div>
             </div>
             
             <div className="relative animate-slide-in-right animate-stagger-4">
-              <Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-8 hover-lift animate-float">
+              <Card className="border-0 shadow-2xl bg-gradient-to-br from-[#00239c] to-[#001e62] text-white p-8 hover-lift animate-float">
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-3 mb-4">
                     <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center animate-scale-in">
@@ -362,17 +362,17 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-[#00239c]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 animate-fade-in animate-stagger-1">
             Join the Future of Healthcare
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto animate-fade-in animate-stagger-2">
+          <p className="text-xl text-[#00a3e0] mb-8 max-w-2xl mx-auto animate-fade-in animate-stagger-2">
             Be part of the revolution in biotechnology and healthcare innovation.
           </p>
           <Button
             size="lg"
-            className="bg-blue-700 text-white rounded-lg px-8 py-3 shadow-lg hover:bg-blue-800 transition"
+            className="bg-[#e76900] text-white rounded-lg px-8 py-3 shadow-lg hover:bg-[#d65a00] transition"
             asChild
           >
             <a
@@ -387,7 +387,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section className="py-20 bg-gradient-to-r from-[#00a3e0]/5 to-[#00239c]/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-4 text-sm font-medium animate-bounce-in animate-stagger-1">
@@ -404,7 +404,7 @@ export default function Home() {
             {/* Free Tier */}
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white animate-slide-up animate-stagger-3 hover-lift">
               <CardHeader className="text-center pb-4">
-                <CardTitle className="text-2xl font-bold text-blue-700">Free</CardTitle>
+                <CardTitle className="text-2xl font-bold text-[#00239c]">Free</CardTitle>
                 <div className="text-4xl font-extrabold text-gray-900 mt-2">$0<span className="text-lg font-medium text-gray-500">/mo</span></div>
                 <CardDescription className="text-gray-500 mt-2">For individuals and hobbyists</CardDescription>
               </CardHeader>
@@ -414,18 +414,18 @@ export default function Home() {
                   <li>✔️ Community support</li>
                   <li>✔️ Basic analytics</li>
                 </ul>
-                <Button size="lg" className="w-full bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition" asChild>
+                <Button size="lg" className="w-full bg-[#00239c] text-white rounded-lg hover:bg-[#001e62] transition" asChild>
                   <a href="https://platform.openbiocure.ai/" target="_blank" rel="noopener noreferrer">Get Started</a>
                 </Button>
               </CardContent>
             </Card>
             {/* Pro Tier (Most Popular) */}
-            <Card className="border-2 border-blue-700 shadow-2xl hover:shadow-2xl transition-shadow bg-white scale-105 z-10 animate-slide-up animate-stagger-4 hover-lift relative">
+            <Card className="border-2 border-[#e76900] shadow-2xl hover:shadow-2xl transition-shadow bg-white scale-105 z-10 animate-slide-up animate-stagger-4 hover-lift relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span className="inline-block bg-blue-700 text-white text-xs font-bold px-4 py-1 rounded-full shadow">Most Popular</span>
+                <span className="inline-block bg-[#e76900] text-white text-xs font-bold px-4 py-1 rounded-full shadow">Most Popular</span>
               </div>
               <CardHeader className="text-center pb-4">
-                <CardTitle className="text-2xl font-bold text-blue-700">Pro</CardTitle>
+                <CardTitle className="text-2xl font-bold text-[#00239c]">Pro</CardTitle>
                 <div className="text-4xl font-extrabold text-gray-900 mt-2">$29<span className="text-lg font-medium text-gray-500">/mo</span></div>
                 <CardDescription className="text-gray-500 mt-2">For professionals and teams</CardDescription>
               </CardHeader>
@@ -438,7 +438,7 @@ export default function Home() {
                   <li>✔️ Custom data connectors</li>
                 </ul>
                 <div className="text-sm italic text-gray-500 mb-4">$5/mo per additional agent</div>
-                <Button size="lg" className="w-full bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition" asChild>
+                <Button size="lg" className="w-full bg-[#e76900] text-white rounded-lg hover:bg-[#d65a00] transition" asChild>
                   <a href="https://platform.openbiocure.ai/" target="_blank" rel="noopener noreferrer">Start Pro</a>
                 </Button>
               </CardContent>
@@ -446,7 +446,7 @@ export default function Home() {
             {/* Enterprise Tier */}
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow bg-white animate-slide-up animate-stagger-5 hover-lift">
               <CardHeader className="text-center pb-4">
-                <CardTitle className="text-2xl font-bold text-blue-700">Enterprise</CardTitle>
+                <CardTitle className="text-2xl font-bold text-[#00239c]">Enterprise</CardTitle>
                 <div className="text-4xl font-extrabold text-gray-900 mt-2">Custom</div>
                 <CardDescription className="text-gray-500 mt-2">For large organizations</CardDescription>
               </CardHeader>
@@ -459,7 +459,7 @@ export default function Home() {
                   <li>✔️ Custom integrations</li>
                 </ul>
                 <div className="text-sm italic text-gray-500 mb-4">$5/mo per additional agent</div>
-                <Button size="lg" className="w-full bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition" asChild>
+                <Button size="lg" className="w-full bg-[#00239c] text-white rounded-lg hover:bg-[#001e62] transition" asChild>
                   <a href="mailto:contact@openbiocure.ai">Contact Sales</a>
                 </Button>
               </CardContent>
@@ -475,19 +475,19 @@ export default function Home() {
             Funding & Investors
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in animate-stagger-2">
-            We’re Looking for Funding
+            We&apos;re Looking for Funding
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8 animate-fade-in animate-stagger-3">
             OpenBioCure is seeking visionary investors and partners to accelerate our mission of transforming healthcare through open, AI-powered biotechnology. If you&apos;re a VC, angel, or strategic investor interested in the future of healthtech, we&apos;d love to connect.
           </p>
-          <Button size="lg" className="bg-blue-700 text-white rounded-lg px-8 py-3 shadow-lg hover:bg-blue-800 transition animate-bounce-in animate-stagger-4" asChild>
+          <Button size="lg" className="bg-[#00239c] text-white rounded-lg px-8 py-3 shadow-lg hover:bg-[#001e62] transition animate-bounce-in animate-stagger-4" asChild>
             <a href="mailto:contact@openbiocure.ai">Contact Us</a>
           </Button>
         </div>
       </section>
 
       {/* Partners Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section className="py-20 bg-gradient-to-r from-[#00a3e0]/5 to-[#00239c]/5">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge variant="secondary" className="mb-4 text-sm font-medium animate-bounce-in animate-stagger-1">
@@ -540,7 +540,9 @@ export default function Home() {
                 className="w-12 h-12 md:w-16 md:h-16"
               />
             </div>
-            <h3 className="text-2xl font-bold mb-4 animate-fade-in">OpenBioCure</h3>
+            <h3 className="text-2xl font-bold mb-4 animate-fade-in">
+              <span className="bg-gradient-to-r from-[#00239c] via-[#001e62] to-[#e76900] bg-clip-text text-transparent">OpenBioCure</span>
+            </h3>
             <p className="text-gray-400 mb-6 animate-fade-in animate-stagger-1">
               Advancing healthcare through innovative biotechnology solutions.
             </p>
