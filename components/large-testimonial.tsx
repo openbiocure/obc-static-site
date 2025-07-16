@@ -29,11 +29,8 @@ export default function LargeTestimonial() {
                 alt="Large testimonial"
               />
             </div>
-            <p className="text-2xl font-bold text-gray-900">
-              “Simple has simplified my life in more ways than one. From
-              managing my sites to{" "}
-              <em className="italic text-gray-500">keeping track of tasks</em>,
-              it's become my go-to tool for everything.”
+            <p className="text-lg text-gray-700">
+              It&apos;s the best platform I&apos;ve used for collaborative research. The modular architecture and AI agents are game changers!
             </p>
             <div className="text-sm font-medium text-gray-500">
               <span className="text-gray-700">Mary Sullivan</span>{" "}

@@ -70,7 +70,7 @@ export default function HeroHome() {
               data-aos="zoom-y-out"
               data-aos-delay={150}
             >
-              The website builder you're <br className="max-lg:hidden" />
+              The website builder you&apos;re <br className="max-lg:hidden" />
               looking for
             </h1>
             <div className="mx-auto max-w-3xl">
