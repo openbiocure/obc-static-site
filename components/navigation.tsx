@@ -32,6 +32,9 @@ export function Navigation() {
             <a href="#contact" className="text-gray-700 hover:text-[#00239c] transition-colors">
               Contact
             </a>
+            <a href="/privacy" className="text-gray-700 hover:text-[#00239c] transition-colors">
+              Privacy
+            </a>
           </div>
           
           <div className="flex items-center space-x-4">
