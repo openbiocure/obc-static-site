@@ -23,7 +23,7 @@ const connectors = [
   { name: "bioRxiv", logo: "/images/connectors/biorxiv.png", alt: "bioRxiv" },
   { name: "OpenAlex", logo: "/images/connectors/openalex.png", alt: "OpenAlex" },
   { name: "Europe PMC", logo: "/images/connectors/europmc.png", alt: "Europe PMC" },
-  { name: "arXiv", logo: "/images/connectors/arxiv.svg", alt: "arXiv", fallback: "/images/connectors/arxiv.png" },
+  { name: "arXiv", logo: "/images/connectors/arxiv.png", alt: "arXiv", fallback: "/images/connectors/arxiv.png" },
   { name: "Zenodo", logo: "/images/connectors/zenodo.png", alt: "Zenodo" },
   { name: "UniProt", logo: "/images/connectors/uniprot.png", alt: "UniProt" },
   { name: "Ensembl", logo: "/images/connectors/ensembl.png", alt: "Ensembl" },
@@ -119,12 +119,13 @@ export default function LandingPage() {
                 alt="OpenBioCure Logo" 
                 className="h-8 w-8"
               />
-              <span className="text-xl font-bold text-obc-blue">OpenBioCure</span>
+              <span className="text-xl font-bold text-obc-blue">OpenBioCure™</span>
             </div>
             <div className="flex items-center space-x-6">
+              <a href="#about" className="text-gray-600 hover:text-obc-blue transition-colors">About</a>
               <a href="#features" className="text-gray-600 hover:text-obc-blue transition-colors">Features</a>
               <a href="#solution" className="text-gray-600 hover:text-obc-blue transition-colors">Solution</a>
-              <a href="#demo" className="text-gray-600 hover:text-obc-blue transition-colors">Demo</a>
+              <a href="#contact" className="text-gray-600 hover:text-obc-blue transition-colors">Contact</a>
             </div>
           </div>
         </div>
@@ -134,15 +135,21 @@ export default function LandingPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-obc-blue via-obc-dark-blue to-obc-blue pt-20 pb-32">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
           <div className="text-center">
+            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+              <span className="text-sm font-semibold text-white">🚧 Prototype Stage - Building & Seeking Pilot Partners</span>
+            </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-              Accelerating Biomedical
+              AI-Powered Biomedical Research Platform
               <br />
-              <span className="text-obc-cyan">Research & Innovation</span>
+              <span className="text-obc-cyan">with Evidence-Backed Insights</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 mb-10 max-w-3xl mx-auto leading-relaxed">
-              A multi-tenant SaaS platform that enables healthcare professionals, 
-              academic researchers, and institutional stakeholders to ingest, analyze, and act on 
-              vast volumes of domain-specific literature and structured data.
+            <p className="text-xl md:text-2xl text-gray-100 mb-4 max-w-3xl mx-auto leading-relaxed">
+              OpenBioCure is an AI-powered biomedical research platform that enables university hospitals 
+              and research institutions to ingest, analyze, and act on vast volumes of domain-specific 
+              literature and structured data with evidence-backed insights.
+            </p>
+            <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto">
+              <strong>Current Status:</strong> Building prototype, seeking pilot partners
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -150,8 +157,8 @@ export default function LandingPage() {
                 className="bg-obc-orange hover:bg-obc-orange/90 text-white text-lg px-8 py-6 rounded-lg"
                 asChild
               >
-                <a href="https://app.openbiocure.ai" target="_blank" rel="noopener noreferrer">
-                  Request Demo
+                <a href="mailto:info@openbiocure.ai?subject=Interested in Piloting OpenBioCure">
+                  Interested in Piloting? Contact Us
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
@@ -159,33 +166,36 @@ export default function LandingPage() {
                 size="lg" 
                 variant="outline"
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-lg px-8 py-6 rounded-lg"
-                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+                asChild
               >
-                Learn More
+                <a href="#about">
+                  Learn More
+                </a>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problem & Solution */}
+      {/* Product Vision */}
       <section id="solution" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-obc-dark-blue mb-6">
-                Democratizing Access to Cutting-Edge Research
+                Product Vision
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                The biomedical research landscape is rapidly expanding, with millions of publications 
-                and datasets generated annually. Researchers and healthcare professionals struggle to 
-                keep pace with the volume of information, leading to missed opportunities and delayed 
-                innovation.
+                OpenBioCure envisions a future where biomedical research insights are instantly accessible 
+                to healthcare professionals and researchers. Our platform combines advanced AI technology 
+                with comprehensive data integration from leading biomedical sources, enabling evidence-based 
+                decision making at unprecedented speed and scale.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                OpenBioCure bridges this gap by providing a comprehensive multi-tenant SaaS platform 
-                that combines artificial intelligence with powerful data ingestion and analysis capabilities, 
-                making cutting-edge research accessible to institutions, teams, and individual researchers.
+                We're building a multi-tenant SaaS platform that democratizes access to cutting-edge 
+                research, making it possible for university hospitals and research institutions to stay 
+                current with the latest findings, identify research opportunities, and accelerate innovation 
+                in clinical and research settings.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
@@ -421,6 +431,42 @@ export default function LandingPage() {
       {/* Data Source Connectors */}
       <ConnectorsCarousel />
 
+      {/* About Section */}
+      <section id="about" className="py-24 bg-obc-bg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-obc-dark-blue mb-4">
+              About OpenBioCure
+            </h2>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg p-8 shadow-lg mb-8">
+              <h3 className="text-2xl font-bold text-obc-dark-blue mb-4">Company Description</h3>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                OpenBioCure is developing an AI-powered biomedical research platform designed to help 
+                university hospitals and research institutions navigate the rapidly expanding landscape 
+                of biomedical literature and data. Our platform integrates with leading research sources 
+                including PubMed, medRxiv, bioRxiv, OpenAlex, and many others to provide comprehensive 
+                access to cutting-edge research insights.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                We're currently in the prototype stage, actively building our platform and seeking 
+                pilot partners who are interested in exploring how AI-powered research tools can 
+                transform their workflows and accelerate their research initiatives.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-obc-dark-blue mb-4">Target Customers</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Our platform is designed specifically for <strong>university hospitals and research 
+                institutions</strong> that need to stay current with biomedical research, make 
+                evidence-based decisions, and accelerate their research and innovation cycles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Use Cases */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -470,35 +516,30 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Demo CTA */}
-      <section id="demo" className="py-24 bg-gradient-to-r from-obc-blue to-obc-dark-blue">
+      {/* Contact Section */}
+      <section id="contact" className="py-24 bg-gradient-to-r from-obc-blue to-obc-dark-blue">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Transform Your Research Workflow?
+            Interested in Piloting?
           </h2>
-          <p className="text-xl text-gray-100 mb-10 max-w-2xl mx-auto">
-            We're in pre-seed stage and ready to present a demo. Join us in revolutionizing 
-            biomedical research with AI-powered insights.
+          <p className="text-xl text-white mb-10 max-w-2xl mx-auto leading-relaxed">
+            We're building our prototype and actively seeking pilot partners. If you're a university 
+            hospital or research institution interested in exploring how AI-powered research tools 
+            can transform your workflows, we'd love to hear from you.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-md mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
+            <p className="text-lg text-gray-100 mb-6">
+              Email us at:
+            </p>
             <Button 
               size="lg" 
               className="bg-obc-orange hover:bg-obc-orange/90 text-white text-lg px-8 py-6 rounded-lg"
               asChild
             >
-              <a href="https://app.openbiocure.ai" target="_blank" rel="noopener noreferrer">
-                Play the demo
+              <a href="mailto:info@openbiocure.ai?subject=Interested in Piloting OpenBioCure">
+                info@openbiocure.ai
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-lg px-8 py-6 rounded-lg"
-              asChild
-            >
-              <a href="mailto:info@openbiocure.ai?subject=Contact Us">
-                Contact Us
               </a>
             </Button>
           </div>
@@ -516,39 +557,43 @@ export default function LandingPage() {
                   alt="OpenBioCure Logo" 
                   className="h-6 w-6"
                 />
-                <span className="text-lg font-bold">OpenBioCure</span>
+                <span className="text-lg font-bold">OpenBioCure™</span>
               </div>
               <p className="text-gray-300 text-sm">
-                Democratizing access to cutting-edge biomedical research insights.
+                AI-powered biomedical research platform with evidence-backed insights.
+              </p>
+              <p className="text-gray-400 text-xs mt-2">
+                Prototype Stage - Building & Seeking Pilot Partners
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Platform</h4>
               <ul className="space-y-2 text-sm text-gray-300">
+                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#solution" className="hover:text-white transition-colors">Solutions</a></li>
-                <li><a href="#demo" className="hover:text-white transition-colors">Demo</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">GitHub</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#solution" className="hover:text-white transition-colors">Solution</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
+                <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
+                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li>
+                  <a href="mailto:info@openbiocure.ai" className="hover:text-white transition-colors">
+                    info@openbiocure.ai
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center text-sm text-gray-300">
-            <p>© 2025 OpenBioCure. All rights reserved.</p>
+            <p>© 2026 OpenBioCure™. All rights reserved.</p>
           </div>
         </div>
       </footer>
