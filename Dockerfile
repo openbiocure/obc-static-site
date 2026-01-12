@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 # Copy built files to nginx html directory
-COPY dist/ /usr/share/nginx/html/
+COPY out/ /usr/share/nginx/html/
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf

@@ -53,10 +53,10 @@ function ConnectorsCarousel() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h3 className="text-lg font-semibold text-gray-500 uppercase tracking-wide mb-2">
-            Integrated Data Sources
+            Connected Research Platforms
           </h3>
           <p className="text-sm text-gray-600">
-            Connecting to leading biomedical research platforms
+            Seamlessly integrated with the world's leading biomedical research databases
           </p>
         </div>
         <div className="relative">

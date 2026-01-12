@@ -7,7 +7,7 @@ export default function Home() {
       <Head>
         <title>OpenBioCure - AI-Powered Biomedical Research Platform</title>
         <meta name="title" content="OpenBioCure - AI-Powered Biomedical Research Platform" />
-        <meta name="description" content="A multi-tenant SaaS platform that enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data. Accelerating biomedical research & innovation." />
+        <meta name="description" content="Enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data. Accelerating biomedical research & innovation." />
         <meta name="keywords" content="biomedical research, AI platform, healthcare, research platform, PubMed, medRxiv, bioRxiv, OpenAlex, literature analysis, clinical research, pharmaceutical research, academic research, RAG, retrieval augmented generation" />
         <meta name="author" content="OpenBioCure" />
         <meta name="robots" content="index, follow" />
@@ -16,14 +16,14 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://openbiocure.ai/" />
         <meta property="og:title" content="OpenBioCure - AI-Powered Biomedical Research Platform" />
-        <meta property="og:description" content="A multi-tenant SaaS platform that enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data." />
+        <meta property="og:description" content="Enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data." />
         <meta property="og:image" content="https://openbiocure.ai/images/openbiocure.webp" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://openbiocure.ai/" />
         <meta property="twitter:title" content="OpenBioCure - AI-Powered Biomedical Research Platform" />
-        <meta property="twitter:description" content="A multi-tenant SaaS platform that enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data." />
+        <meta property="twitter:description" content="Enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data." />
         <meta property="twitter:image" content="https://openbiocure.ai/images/openbiocure.webp" />
         
         {/* Structured Data for Google */}
@@ -36,7 +36,7 @@ export default function Home() {
               "name": "OpenBioCure",
               "url": "https://openbiocure.ai",
               "logo": "https://openbiocure.ai/images/icon-obc.png",
-              "description": "A multi-tenant SaaS platform that enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data.",
+              "description": "Enables healthcare professionals, academic researchers, and institutional stakeholders to ingest, analyze, and act on vast volumes of domain-specific literature and structured data.",
               "sameAs": [],
               "contactPoint": {
                 "@type": "ContactPoint",
