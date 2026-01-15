@@ -1,0 +1,8 @@
+name = "obc-failover-worker"
+main = "cloudflare-worker-failover.js"
+compatibility_date = "2024-01-01"
+
+# Route configuration - will be set when deploying
+# routes = [
+#   { pattern = "yourdomain.com/*", zone_name = "yourdomain.com" }
+# ]
