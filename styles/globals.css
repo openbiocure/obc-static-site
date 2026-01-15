@@ -1,4 +1,128 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Urbanist:wght@400;500;600;700&family=Lato:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;700&display=swap');
 
+/* Color Variables */
+:root {
+  /* Primary Colors */
+  --primary-100: #0F2A44;
+  --primary-80: #13416D;
+  --primary-60: #246AAD;
+  --primary-40: #0972D7;
+  --primary-20: #B4D8FA;
+  --primary-10: #EFF6FF;
+
+  /* Secondary Colors */
+  --secondary-100: #2FA4A9;
+  --secondary-80: #41D0D6;
+  --secondary-60: #5BECF3;
+  --secondary-40: #7DF9FF;
+  --secondary-20: #A3FBFF;
+  --secondary-10: #E9FEFF;
+
+  /* Alert & Status Colors */
+  --success: #12D18E;
+  --warning: #FFC832;
+  --error: #F54141;
+
+  /* Greyscale */
+  --gray-900: #212121;
+  --gray-800: #424242;
+  --gray-700: #616161;
+  --gray-600: #757575;
+  --gray-500: #9E9E9E;
+  --gray-400: #BDBDBD;
+  --gray-300: #E0E0E0;
+  --gray-200: #EEEEEE;
+  --gray-100: #F5F5F5;
+  --white: #FFFFFF;
+
+  /* Border Colors */
+  --border-default: #E1E4EA;
+  --border-light: #E1EBF4;
+
+  /* Background Colors */
+  --bg-light: #F2F5F8;
+  --bg-white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Styles */
+.text-heading-large {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 160%;
+  color: var(--white);
+}
+
+.text-heading-medium {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 40px;
+  color: var(--gray-900);
+}
+
+.text-heading-small {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  color: var(--gray-900);
+}
+
+.text-subheading {
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+
+.text-body {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.text-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--gray-500);
+}
+
+/* Utility Classes */
+.bg-primary-dark {
+  background-color: var(--primary-100);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-100);
+}
+
+.bg-gray-900 {
+  background-color: var(--gray-900);
+}
+
+.border-bottom-default {
+  border-bottom: 1px solid var(--border-default);
+}
+
+.border-bottom-light {
+  border-bottom: 1px solid var(--border-light);
+}

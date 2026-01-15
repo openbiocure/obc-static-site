@@ -1,8 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Urbanist:wght@400;500;600;700&family=Lato:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary-100: #0F2A44;
+    --color-primary-80: #13416D;
+    --color-primary-60: #246AAD;
+    --color-primary-40: #0972D7;
+    --color-primary-20: #B4D8FA;
+    --color-primary-10: #EFF6FF;
 
+    /* Secondary Colors */
+    --color-secondary-100: #2FA4A9;
+    --color-secondary-80: #41D0D6;
+    --color-secondary-60: #5BECF3;
+    --color-secondary-40: #7DF9FF;
+    --color-secondary-20: #A3FBFF;
+    --color-secondary-10: #E9FEFF;
 
+    /* Alert & Status Colors */
+    --color-success: #12D18E;
+    --color-warning: #FFC832;
+    --color-error: #F54141;
 
+    /* Greyscale */
+    --color-gray-900: #212121;
+    --color-gray-800: #424242;
+    --color-gray-700: #616161;
+    --color-gray-600: #757575;
+    --color-gray-500: #9E9E9E;
+    --color-gray-400: #BDBDBD;
+    --color-gray-300: #E0E0E0;
+    --color-gray-200: #EEEEEE;
+    --color-gray-100: #F5F5F5;
+    --color-white: #FFFFFF;
 
+    /* Border Colors */
+    --color-border-default: #E1E4EA;
+    --color-border-light: #E1EBF4;
+
+    /* Background Colors */
+    --color-bg-light: #F2F5F8;
+    --color-bg-white: #FFFFFF;
+  }
+
+  body {
+    @apply font-sans text-gray-900 bg-white;
+  }
+
+  h1 {
+    @apply font-urbanist font-bold text-6xl text-white;
+  }
+
+  h2 {
+    @apply font-ibm-plex font-bold text-4xl text-gray-900;
+  }
+
+  h3 {
+    @apply font-ibm-plex font-bold text-2xl text-gray-900;
+  }
+
+  h4 {
+    @apply font-ibm-plex font-semibold text-xl text-gray-900;
+  }
+
+  p {
+    @apply font-urbanist text-base text-gray-900;
+  }
+}
+
+@layer components {
+  .text-subheading {
+    @apply font-lato font-medium text-sm uppercase tracking-normal text-gray-500;
+  }
+
+  .text-label {
+    @apply font-ibm-plex text-base text-gray-500;
+  }
+
+  .text-label-large {
+    @apply font-ibm-plex text-lg text-gray-500;
+  }
+
+  .text-label-small {
+    @apply font-ibm-plex text-sm text-gray-500;
+  }
+
+  .border-default {
+    @apply border border-border-default;
+  }
+
+  .border-light {
+    @apply border border-border-light;
+  }
+}
