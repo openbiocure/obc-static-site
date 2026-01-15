@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Urbanist:wght@400;500;600;700&family=Lato:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Work+Sans:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Color Variables */
 :root {
@@ -42,87 +44,4 @@
   /* Background Colors */
   --bg-light: #F2F5F8;
   --bg-white: #FFFFFF;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Typography Styles */
-.text-heading-large {
-  font-family: 'Urbanist', sans-serif;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 160%;
-  color: var(--white);
-}
-
-.text-heading-medium {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 40px;
-  color: var(--gray-900);
-}
-
-.text-heading-small {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 26px;
-  color: var(--gray-900);
-}
-
-.text-subheading {
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--gray-500);
-}
-
-.text-body {
-  font-family: 'Urbanist', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.text-label {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  color: var(--gray-500);
-}
-
-/* Utility Classes */
-.bg-primary-dark {
-  background-color: var(--primary-100);
-}
-
-.bg-secondary {
-  background-color: var(--secondary-100);
-}
-
-.bg-gray-900 {
-  background-color: var(--gray-900);
-}
-
-.border-bottom-default {
-  border-bottom: 1px solid var(--border-default);
-}
-
-.border-bottom-light {
-  border-bottom: 1px solid var(--border-light);
 }

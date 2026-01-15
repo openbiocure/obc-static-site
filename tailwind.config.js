@@ -1,14 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        // Primary Colors
+        // Original OBC Colors (keeping for backward compatibility)
+        'obc-blue': '#00239C',
+        'obc-dark-blue': '#001E62',
+        'obc-orange': '#E76900',
+        'obc-cyan': '#00A3E0',
+        'obc-bg': 'rgb(249, 250, 251)',
+        
+        // New Design System - Primary Colors
         primary: {
           100: '#0F2A44',
           80: '#13416D',
@@ -17,7 +24,7 @@ module.exports = {
           20: '#B4D8FA',
           10: '#EFF6FF',
         },
-        // Secondary Colors
+        // New Design System - Secondary Colors
         secondary: {
           100: '#2FA4A9',
           80: '#41D0D6',
@@ -55,18 +62,14 @@ module.exports = {
           light: '#F2F5F8',
           white: '#FFFFFF',
         },
-        // Legacy/Compatibility Colors (mapped to new system)
-        'obc-bg': '#F2F5F8',
-        'obc-blue': '#0972D7', // Primary 40
-        'obc-primary': '#0F2A44', // Primary 100
-        'obc-secondary': '#2FA4A9', // Secondary 100
       },
       fontFamily: {
-        sans: ['DM Sans', 'sans-serif'],
+        sans: ['Montserrat', 'system-ui', 'sans-serif'],
         urbanist: ['Urbanist', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
         'ibm-plex': ['IBM Plex Sans', 'sans-serif'],
         'work-sans': ['Work Sans', 'sans-serif'],
+        'dm-sans': ['DM Sans', 'sans-serif'],
       },
       fontSize: {
         'xs': ['10px', { lineHeight: '13px' }],
