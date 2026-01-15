@@ -1,4 +1,4 @@
-import LandingPage from '../components/LandingPage'
+import LandingPage from '../src/components/LandingPage'
 import Head from 'next/head'
 
 export default function Home() {

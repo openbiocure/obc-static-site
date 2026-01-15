@@ -16,6 +16,12 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+interface ContactFormData {
+  email: string;
+  organization: string;
+  message: string;
+}
+
 const connectors = [
   { name: "PubMed", logo: "/images/connectors/pubmed.png", alt: "PubMed/NCBI" },
   { name: "Google Scholar", logo: "/images/connectors/googlescholar.png", alt: "Google Scholar" },
@@ -108,7 +114,7 @@ function ConnectorsCarousel() {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-obc-bg font-sans">
+    <div className="min-h-screen bg-obc-bg font-sans flex flex-col">
       {/* Navigation */}
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,6 +137,7 @@ export default function LandingPage() {
         </div>
       </nav>
 
+      <div className="flex-grow">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-obc-blue via-obc-dark-blue to-obc-blue pt-20 pb-32">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
@@ -545,6 +552,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Footer */}
       <footer className="bg-obc-dark-blue text-white py-12">
@@ -592,8 +600,18 @@ export default function LandingPage() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/20 pt-8 text-center text-sm text-gray-300">
-            <p>© 2026 OpenBioCure™. All rights reserved.</p>
+          <div className="border-t border-white/20 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-gray-300">© 2026 OpenBioCure™. All rights reserved.</p>
+              <div className="flex gap-6 text-base">
+                <a href="/privacy-policy" className="text-white hover:text-obc-cyan transition-colors underline">
+                  Privacy Policy
+                </a>
+                <a href="/terms-of-conditions" className="text-white hover:text-obc-cyan transition-colors underline">
+                  Terms & Conditions
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
