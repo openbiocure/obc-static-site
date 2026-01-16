@@ -11,551 +11,496 @@ import {
   CheckCircle2,
   BarChart3,
   Network,
-  ChevronLeft,
-  ChevronRight
+  Rocket
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface ContactFormData {
+  name: string;
   email: string;
   organization: string;
   message: string;
 }
 
-const connectors = [
-  { name: "PubMed", logo: "/images/connectors/pubmed.png", alt: "PubMed/NCBI" },
-  { name: "Google Scholar", logo: "/images/connectors/googlescholar.png", alt: "Google Scholar" },
-  { name: "medRxiv", logo: "/images/connectors/medrxiv.png", alt: "medRxiv" },
-  { name: "bioRxiv", logo: "/images/connectors/biorxiv.png", alt: "bioRxiv" },
-  { name: "OpenAlex", logo: "/images/connectors/openalex.png", alt: "OpenAlex" },
-  { name: "Europe PMC", logo: "/images/connectors/europmc.png", alt: "Europe PMC" },
-  { name: "arXiv", logo: "/images/connectors/arxiv.png", alt: "arXiv", fallback: "/images/connectors/arxiv.png" },
-  { name: "Zenodo", logo: "/images/connectors/zenodo.png", alt: "Zenodo" },
-  { name: "UniProt", logo: "/images/connectors/uniprot.png", alt: "UniProt" },
-  { name: "Ensembl", logo: "/images/connectors/ensembl.png", alt: "Ensembl" },
-  { name: "ClinicalTrials", logo: "/images/connectors/clinicaltrials.png", alt: "ClinicalTrials.gov" },
-];
+function ProductDemoImage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(8);
+  const [rotateY, setRotateY] = useState(20);
+  const lastScrollY = useRef(0);
+  const scrollDirection = useRef<'up' | 'down'>('down');
 
-function ConnectorsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerView = 6;
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    lastScrollY.current = window.scrollY;
+    
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY.current;
+      
+      if (scrollingDown !== (scrollDirection.current === 'down')) {
+        scrollDirection.current = scrollingDown ? 'down' : 'up';
+      }
+      
+      lastScrollY.current = currentScrollY;
+      
+      // Animate to 0 when scrolling down, back to 8/20 when scrolling up
+      if (scrollDirection.current === 'down') {
+        setRotateX(0);
+        setRotateY(0);
+      } else {
+        setRotateX(8);
+        setRotateY(20);
+      }
+    };
 
-  const next = () => {
-    setCurrentIndex((prev) => {
-      const maxIndex = Math.max(0, connectors.length - itemsPerView);
-      return prev >= maxIndex ? 0 : prev + 1;
-    });
-  };
-
-  const prev = () => {
-    setCurrentIndex((prev) => {
-      const maxIndex = Math.max(0, connectors.length - itemsPerView);
-      return prev <= 0 ? maxIndex : prev - 1;
-    });
-  };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial calculation
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section className="py-16 bg-obc-bg border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h3 className="text-lg font-semibold text-gray-500 uppercase tracking-wide mb-2">
-            Connected Research Platforms
-          </h3>
-          <p className="text-sm text-gray-600">
-            Seamlessly integrated with the world's leading biomedical research databases
-          </p>
-        </div>
-        <div className="relative">
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors"
-            aria-label="Previous connectors"
-          >
-            <ChevronLeft className="h-6 w-6 text-obc-blue" />
-          </button>
-          <div className="overflow-hidden mx-12">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
-            >
-              {connectors.map((connector, index) => (
-                <div 
-                  key={index}
-                  className="flex-shrink-0 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity px-4"
-                  style={{ minWidth: `${100 / itemsPerView}%` }}
-                >
-                  <img 
-                    src={connector.logo}
-                    alt={connector.alt} 
-                    className="h-12 w-auto object-contain max-w-full"
-                    onError={(e) => { 
-                      if (connector.fallback) {
-                        e.currentTarget.src = connector.fallback;
-                      }
-                    }}
-                  />
-                  <span className="text-xs text-gray-500 mt-2 text-center">{connector.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50 transition-colors"
-            aria-label="Next connectors"
-          >
-            <ChevronRight className="h-6 w-6 text-obc-blue" />
-          </button>
-        </div>
+    <div 
+      ref={containerRef}
+      className="relative w-full max-w-xl mx-auto" 
+      style={{ 
+        aspectRatio: '1462/1065', 
+        maxHeight: '200px',
+        perspective: '1000px',
+      }}
+    >
+      <div
+        style={{
+          transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      >
+        <img 
+          src="/images/search.svg" 
+          alt="OpenBioCure Search Interface Demo" 
+          className="w-full h-full object-contain rounded-medium"
+          style={{
+            filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+          }}
+        />
       </div>
-    </section>
+    </div>
   );
 }
 
-export default function LandingPage() {
+function WorkspaceImage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(8);
+  const [rotateY, setRotateY] = useState(20);
+  const lastScrollY = useRef(window.scrollY);
+  const scrollDirection = useRef<'up' | 'down'>('down');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY.current;
+      
+      if (scrollingDown !== (scrollDirection.current === 'down')) {
+        scrollDirection.current = scrollingDown ? 'down' : 'up';
+      }
+      
+      lastScrollY.current = currentScrollY;
+      
+      // Animate to 0 when scrolling down, back to 8/20 when scrolling up
+      if (scrollDirection.current === 'down') {
+        setRotateX(0);
+        setRotateY(0);
+      } else {
+        setRotateX(8);
+        setRotateY(20);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial calculation
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-obc-bg font-sans flex flex-col">
+    <div 
+      ref={containerRef}
+      className="relative w-full max-w-xl mx-auto" 
+      style={{ 
+        aspectRatio: '1462/1065', 
+        maxHeight: '200px',
+        perspective: '1000px',
+      }}
+    >
+      <div
+        style={{
+          transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      >
+        <img 
+          src="/images/workspace.svg" 
+          alt="OpenBioCure Workspace Interface" 
+          className="w-full h-full object-contain rounded-medium"
+          style={{
+            filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
+export default function LandingPage() {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    organization: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+    try {
+      // Execute reCAPTCHA v3 (invisible, runs automatically)
+      let recaptchaToken = '';
+      if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+        await new Promise<void>((resolve) => {
+          window.grecaptcha.ready(async () => {
+            try {
+              recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' });
+              resolve();
+            } catch (error) {
+              console.error('reCAPTCHA execute error:', error);
+              throw error;
+            }
+          });
+        });
+      } else {
+        throw new Error('reCAPTCHA not loaded');
+      }
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: data.message || 'Thank you! We will contact you soon.' });
+        setFormData({ name: '', email: '', organization: '', message: '' });
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || 'Something went wrong. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({ type: 'error', message: 'Network error. Please try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-bg-white font-sans flex flex-col">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <nav className="bg-bg-white border-b border-border-default sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-logo-header">
             <div className="flex items-center space-x-3">
               <img 
                 src="/images/icon-obc.png" 
                 alt="OpenBioCure Logo" 
                 className="h-8 w-8"
               />
-              <span className="text-xl font-bold text-obc-blue">OpenBioCure™</span>
-            </div>
-            <div className="flex items-center space-x-6">
-              <a href="#about" className="text-gray-600 hover:text-obc-blue transition-colors">About</a>
-              <a href="#features" className="text-gray-600 hover:text-obc-blue transition-colors">Features</a>
-              <a href="#solution" className="text-gray-600 hover:text-obc-blue transition-colors">Solution</a>
-              <a href="#contact" className="text-gray-600 hover:text-obc-blue transition-colors">Contact</a>
+              <span className="text-brand font-bold text-text-primary" style={{ fontSize: 'var(--font-size-brand)', lineHeight: '1' }}>OpenBioCure™</span>
             </div>
           </div>
         </div>
       </nav>
 
       <div className="flex-grow">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-obc-blue via-obc-dark-blue to-obc-blue pt-20 pb-32">
+      {/* Hero Section - Investor Pitch */}
+      <section className="relative overflow-hidden bg-bg-black pt-24 pb-32">
+        <div className="absolute inset-0 opacity-30" style={{ background: 'var(--gradient-overlay)' }}></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
           <div className="text-center">
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-semibold text-white">🚧 Prototype Stage - Building & Seeking Pilot Partners</span>
+            <div className="inline-flex items-center gap-2 bg-accent-primary/20 backdrop-blur-sm px-6 py-3 rounded-large mb-8 border border-accent-primary/30">
+              <Rocket className="h-5 w-5 text-accent-primary" />
+              <span className="text-button font-medium text-text-white">Pilot Stage - Seeking Strategic Partners & Investment</span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-              AI-Powered Biomedical Research Platform
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-text-white mb-6" style={{ fontSize: '48px', lineHeight: '1.1' }}>
+              Transforming Biomedical Research
               <br />
-              <span className="text-obc-cyan">with Evidence-Backed Insights</span>
+              <span className="text-accent-primary">with AI-Powered Intelligence</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 mb-4 max-w-3xl mx-auto leading-relaxed">
-              OpenBioCure is an AI-powered biomedical research platform that enables university hospitals 
-              and research institutions to ingest, analyze, and act on vast volumes of domain-specific 
-              literature and structured data with evidence-backed insights.
+            <p className="text-body-large text-text-light-gray mb-6 max-w-3xl mx-auto leading-relaxed">
+              OpenBioCure is building the next-generation AI platform that enables healthcare institutions 
+              to unlock insights from millions of research papers, accelerating evidence-based decision-making 
+              and reducing time-to-innovation.
             </p>
-            <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto">
-              <strong>Current Status:</strong> Building prototype, seeking pilot partners
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button 
                 size="lg" 
-                className="bg-obc-orange hover:bg-obc-orange/90 text-white text-lg px-8 py-6 rounded-lg"
+                className="bg-accent-primary hover:opacity-90 text-text-white text-button px-8 py-6 rounded-large"
+                style={{ background: 'var(--gradient-primary)' }}
                 asChild
               >
-                <a href="mailto:info@openbiocure.ai?subject=Interested in Piloting OpenBioCure">
-                  Interested in Piloting? Contact Us
+                <a href="#contact">
+                  Explore Investment Opportunity
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-lg px-8 py-6 rounded-lg"
+                className="bg-bg-white/10 border-bg-white/20 text-text-white hover:bg-bg-white/20 text-button px-8 py-6 rounded-large"
                 asChild
               >
-                <a href="#about">
-                  Learn More
+                <a href="#contact" className="text-text-white">
+                  View Product Demo
                 </a>
               </Button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Vision */}
-      <section id="solution" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-obc-dark-blue mb-6">
-                Product Vision
-              </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                OpenBioCure envisions a future where biomedical research insights are instantly accessible 
-                to healthcare professionals and researchers. Our platform combines advanced AI technology 
-                with comprehensive data integration from leading biomedical sources, enabling evidence-based 
-                decision making at unprecedented speed and scale.
-              </p>
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                We're building a multi-tenant SaaS platform that democratizes access to cutting-edge 
-                research, making it possible for university hospitals and research institutions to stay 
-                current with the latest findings, identify research opportunities, and accelerate innovation 
-                in clinical and research settings.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <CheckCircle2 className="h-6 w-6 text-obc-cyan mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-obc-dark-blue mb-1">Evidence-Based Decision Making</h3>
-                    <p className="text-gray-600">Accelerate decision-making with AI-powered insights from vast research libraries</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle2 className="h-6 w-6 text-obc-cyan mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-obc-dark-blue mb-1">Standardized Best Practices</h3>
-                    <p className="text-gray-600">Ensure consistency and quality across clinical and research workflows</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle2 className="h-6 w-6 text-obc-cyan mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-obc-dark-blue mb-1">Reduced Time-to-Innovation</h3>
-                    <p className="text-gray-600">Cut down research cycles and bring solutions to market faster</p>
-                  </div>
-                </div>
+            {/* Key Metrics */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-16">
+              <div className="bg-bg-white/10 backdrop-blur-sm rounded-large p-6 border border-bg-white/20">
+                <div className="text-4xl font-bold text-accent-primary mb-2">10+</div>
+                <div className="text-body text-text-light-gray">Data Sources Integrated</div>
               </div>
-            </div>
-            <div className="relative">
-              <div className="bg-gradient-to-br from-obc-blue to-obc-cyan rounded-2xl p-8 shadow-2xl">
-                <div className="bg-white rounded-lg p-6 space-y-4">
-                  <div className="flex items-center space-x-3 mb-6">
-                    <Bot className="h-8 w-8 text-obc-blue" />
-                    <h3 className="text-xl font-bold text-obc-dark-blue">Platform Capabilities</h3>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-obc-bg p-4 rounded-lg">
-                      <Database className="h-6 w-6 text-obc-cyan mb-2" />
-                      <p className="font-semibold text-sm">Data Ingestion</p>
-                    </div>
-                    <div className="bg-obc-bg p-4 rounded-lg">
-                      <FileSearch className="h-6 w-6 text-obc-orange mb-2" />
-                      <p className="font-semibold text-sm">Literature Analysis</p>
-                    </div>
-                    <div className="bg-obc-bg p-4 rounded-lg">
-                      <BarChart3 className="h-6 w-6 text-obc-blue mb-2" />
-                      <p className="font-semibold text-sm">AI Insights</p>
-                    </div>
-                    <div className="bg-obc-bg p-4 rounded-lg">
-                      <Network className="h-6 w-6 text-obc-cyan mb-2" />
-                      <p className="font-semibold text-sm">Multi-Source</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="bg-bg-white/10 backdrop-blur-sm rounded-large p-6 border border-bg-white/20">
+                <div className="text-4xl font-bold text-accent-primary mb-2">Pilot</div>
+                <div className="text-body text-text-light-gray">Stage - Seeking Partners</div>
+              </div>
+              <div className="bg-bg-white/10 backdrop-blur-sm rounded-large p-6 border border-bg-white/20">
+                <div className="text-4xl font-bold text-accent-primary mb-2">30+</div>
+                <div className="text-body text-text-light-gray">Specialist Agents & Connectors</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-24 bg-obc-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-obc-dark-blue mb-4">
-              Powerful Features for Modern Research
+      {/* Product Demo Section */}
+      <section id="demo" className="h-screen flex items-center bg-bg-gray-50" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center mb-6">
+            <h2 className="text-4xl font-bold text-text-primary mb-2" style={{ fontSize: 'var(--font-size-h1)', lineHeight: 'var(--line-height-h1)' }}>
+              Intelligent Research Search
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Built with cutting-edge AI technology
+            <p className="text-body-large text-text-secondary max-w-2xl mx-auto">
+              Ask questions in natural language and discover relevant research papers, clinical trials, and biomedical insights across multiple databases in seconds
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 border-2 hover:border-obc-blue transition-colors">
-              <div className="bg-obc-blue/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <FlaskConical className="h-6 w-6 text-obc-blue" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Multi-Source Connectors
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Integrate with PubMed, medRxiv, bioRxiv, OpenAlex, Europe PMC, arXiv, Zenodo, UniProt, 
-                and 20+ other biomedical data sources. Comprehensive document ingestion with automated processing pipelines.
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <ProductDemoImage />
+            <div className="bg-bg-white rounded-large p-8 shadow-lg border border-border-default">
+              <p className="text-body text-text-secondary mb-6">
+                Our prototype demonstrates intelligent search capabilities that understand context and meaning, 
+                helping researchers quickly find relevant information across multiple research databases.
               </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-orange transition-colors">
-              <div className="bg-obc-orange/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Bot className="h-6 w-6 text-obc-orange" />
+              <div className="flex flex-col gap-4">
+                <Button 
+                  size="lg" 
+                  className="bg-accent-primary hover:opacity-90 text-text-white text-button px-8 py-6 rounded-large"
+                  style={{ background: 'var(--gradient-primary)' }}
+                  asChild
+                >
+                  <a href="#contact">
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="bg-bg-white border-border-default text-text-primary hover:bg-bg-gray-50 text-button px-8 py-6 rounded-large"
+                  asChild
+                >
+                  <a href="#contact">
+                    Request Access
+                  </a>
+                </Button>
               </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                AI-Powered RAG
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Retrieval Augmented Generation technology enables intelligent document analysis, 
-                entity extraction, and contextual insights from research literature.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-blue transition-colors">
-              <div className="bg-obc-blue/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <FileSearch className="h-6 w-6 text-obc-blue" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Advanced Search & Analysis
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Powerful search capabilities with semantic understanding, citation tracking, 
-                and relationship mapping across research documents.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-orange transition-colors">
-              <div className="bg-obc-orange/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="h-6 w-6 text-obc-orange" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Scalable & Efficient
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Built for scale with cloud-native deployment and support for processing 
-                millions of documents efficiently.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-cyan transition-colors">
-              <div className="bg-obc-cyan/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="h-6 w-6 text-obc-cyan" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Secure & Compliant
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Platform with enterprise-grade security, comprehensive access controls, 
-                and full audit trails for research compliance.
-              </p>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SaaS Features */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-obc-dark-blue mb-4">
-              Enterprise-Ready SaaS Platform
+      {/* Workspace Section */}
+      <section id="workspace" className="h-screen flex items-center bg-bg-white" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center mb-6">
+            <h2 className="text-4xl font-bold text-text-primary mb-2" style={{ fontSize: 'var(--font-size-h1)', lineHeight: 'var(--line-height-h1)' }}>
+              Workspace
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Multi-tenant architecture designed for institutions, research teams, and organizations
+            <p className="text-body-large text-text-secondary max-w-2xl mx-auto">
+              Organize and manage your research projects in a collaborative workspace
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 border-2 hover:border-obc-blue transition-colors">
-              <div className="bg-obc-blue/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Network className="h-6 w-6 text-obc-blue" />
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <WorkspaceImage />
+            <div className="bg-bg-white rounded-large p-8 shadow-lg border border-border-default">
+              <p className="text-body text-text-secondary mb-6">
+                Our workspace feature enables researchers to organize their projects, collaborate with team members, 
+                and manage research workflows efficiently. Keep track of your research, save important findings, 
+                and work together seamlessly.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-2 bg-accent-primary/10 px-4 py-2 rounded-medium">
+                  <CheckCircle2 className="h-5 w-5 text-accent-primary" />
+                  <span className="text-body font-medium text-text-primary">Project Organization</span>
+                </div>
+                <div className="flex items-center gap-2 bg-accent-primary/10 px-4 py-2 rounded-medium">
+                  <CheckCircle2 className="h-5 w-5 text-accent-primary" />
+                  <span className="text-body font-medium text-text-primary">Team Collaboration</span>
+                </div>
+                <div className="flex items-center gap-2 bg-accent-primary/10 px-4 py-2 rounded-medium">
+                  <CheckCircle2 className="h-5 w-5 text-accent-primary" />
+                  <span className="text-body font-medium text-text-primary">Workflow Management</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Multi-Tenant Architecture
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Secure tenant isolation with dedicated workspaces for institutions, 
-                research teams, and organizations. Complete data separation and access control.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-orange transition-colors">
-              <div className="bg-obc-orange/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="h-6 w-6 text-obc-orange" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Personalized Scholar Dashboard
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                AI-powered personalized dashboard with trending topics, new publications, 
-                citation tracking, and research insights tailored to your interests.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-cyan transition-colors">
-              <div className="bg-obc-cyan/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <FileSearch className="h-6 w-6 text-obc-cyan" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Workspace & Project Management
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Collaborative workspaces for research projects with team management, 
-                shared resources, and real-time collaboration features.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-blue transition-colors">
-              <div className="bg-obc-blue/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <CheckCircle2 className="h-6 w-6 text-obc-blue" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Team Collaboration
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Real-time collaboration with team members, project invitations, 
-                shared research contexts, and collaborative analysis tools.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-orange transition-colors">
-              <div className="bg-obc-orange/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="h-6 w-6 text-obc-orange" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Real-Time Notifications
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Stay updated with real-time notifications for collaboration requests, 
-                project updates, new publications, and citation alerts.
-              </p>
-            </Card>
-
-            <Card className="p-6 border-2 hover:border-obc-cyan transition-colors">
-              <div className="bg-obc-cyan/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="h-6 w-6 text-obc-cyan" />
-              </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">
-                Role-Based Access Control
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Enterprise-grade RBAC with tenant-scoped permissions, 
-                secure authentication, and comprehensive audit logging.
-              </p>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Data Source Connectors */}
-      <ConnectorsCarousel />
-
-      {/* About Section */}
-      <section id="about" className="py-24 bg-obc-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-obc-dark-blue mb-4">
-              About OpenBioCure
-            </h2>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg p-8 shadow-lg mb-8">
-              <h3 className="text-2xl font-bold text-obc-dark-blue mb-4">Company Description</h3>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                OpenBioCure is developing an AI-powered biomedical research platform designed to help 
-                university hospitals and research institutions navigate the rapidly expanding landscape 
-                of biomedical literature and data. Our platform integrates with leading research sources 
-                including PubMed, medRxiv, bioRxiv, OpenAlex, and many others to provide comprehensive 
-                access to cutting-edge research insights.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                We're currently in the prototype stage, actively building our platform and seeking 
-                pilot partners who are interested in exploring how AI-powered research tools can 
-                transform their workflows and accelerate their research initiatives.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-obc-dark-blue mb-4">Target Customers</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Our platform is designed specifically for <strong>university hospitals and research 
-                institutions</strong> that need to stay current with biomedical research, make 
-                evidence-based decisions, and accelerate their research and innovation cycles.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Use Cases */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-obc-dark-blue mb-4">
-              Built for Healthcare & Research Professionals
+      {/* Contact Section - Pilot Test Invitation */}
+      <section id="contact" className="py-24" style={{ background: 'var(--gradient-primary)' }}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-text-white mb-6" style={{ fontSize: '48px', lineHeight: '1.1' }}>
+              Join Our Pilot Test Program
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Empowering clinical, pharmaceutical, and public-health settings
+            <p className="text-body-large text-text-white mb-8 max-w-2xl mx-auto leading-relaxed">
+              We're inviting organizations and individuals to pilot test our platform. 
+              Help us shape the future of biomedical research by providing feedback and insights 
+              as we refine our AI-powered research tools.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="bg-obc-blue/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🏥</span>
+          <div className="bg-bg-white rounded-large p-8 shadow-lg max-w-2xl mx-auto">
+            <h3 className="text-h2 font-bold text-text-primary mb-6 text-center">Request Pilot Access</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-body font-medium text-text-primary mb-2">
+                  Name <span className="text-accent-error">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full h-input px-4 py-2 border border-border-default rounded-medium text-body text-text-primary bg-bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary focus:border-accent-primary"
+                  placeholder="Your full name"
+                />
               </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">Clinical Settings</h3>
-              <p className="text-gray-600">
-                Enable evidence-based decision making in clinical environments with real-time 
-                access to the latest research and treatment protocols.
-              </p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="bg-obc-orange/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">💊</span>
+              <div>
+                <label htmlFor="email" className="block text-body font-medium text-text-primary mb-2">
+                  Email <span className="text-accent-error">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full h-input px-4 py-2 border border-border-default rounded-medium text-body text-text-primary bg-bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary focus:border-accent-primary"
+                  placeholder="your.email@example.com"
+                />
               </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">Pharmaceutical Research</h3>
-              <p className="text-gray-600">
-                Accelerate drug discovery and development by analyzing vast literature databases 
-                and identifying promising research directions.
-              </p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="bg-obc-cyan/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🎓</span>
+              <div>
+                <label htmlFor="organization" className="block text-body font-medium text-text-primary mb-2">
+                  Organization (Optional)
+                </label>
+                <input
+                  type="text"
+                  id="organization"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  className="w-full h-input px-4 py-2 border border-border-default rounded-medium text-body text-text-primary bg-bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary focus:border-accent-primary"
+                  placeholder="Your organization or institution"
+                />
               </div>
-              <h3 className="text-xl font-bold text-obc-dark-blue mb-3">Academic Research</h3>
-              <p className="text-gray-600">
-                Support academic researchers with comprehensive tools for literature review, 
-                citation analysis, and research collaboration.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gradient-to-r from-obc-blue to-obc-dark-blue">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Interested in Piloting?
-          </h2>
-          <p className="text-xl text-white mb-10 max-w-2xl mx-auto leading-relaxed">
-            We're building our prototype and actively seeking pilot partners. If you're a university 
-            hospital or research institution interested in exploring how AI-powered research tools 
-            can transform your workflows, we'd love to hear from you.
-          </p>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-md mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
-            <p className="text-lg text-gray-100 mb-6">
-              Email us at:
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-obc-orange hover:bg-obc-orange/90 text-white text-lg px-8 py-6 rounded-lg"
-              asChild
-            >
-              <a href="mailto:info@openbiocure.ai?subject=Interested in Piloting OpenBioCure">
-                info@openbiocure.ai
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
+              <div>
+                <label htmlFor="message" className="block text-body font-medium text-text-primary mb-2">
+                  Tell us about your interest <span className="text-accent-error">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-border-default rounded-medium text-body text-text-primary bg-bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary focus:border-accent-primary resize-none"
+                  placeholder="Why are you interested in pilot testing OpenBioCure? What research challenges are you hoping to solve?"
+                />
+              </div>
+              {submitStatus.type && (
+                <div className={`p-4 rounded-medium ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-accent-primary/10 text-accent-primary border border-accent-primary/20' 
+                    : 'bg-accent-error-bg text-accent-error-text border border-accent-error/20'
+                }`}>
+                  <p className="text-body font-medium">{submitStatus.message}</p>
+                </div>
+              )}
+              <Button
+                type="submit"
+                size="lg"
+                disabled={isSubmitting}
+                className="w-full bg-accent-primary hover:opacity-90 text-text-white text-button px-8 py-6 rounded-large font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ background: 'var(--gradient-primary)' }}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
+              </Button>
+            </form>
           </div>
         </div>
       </section>
       </div>
 
       {/* Footer */}
-      <footer className="bg-obc-dark-blue text-white py-12">
+      <footer className="bg-bg-black text-text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
@@ -565,49 +510,48 @@ export default function LandingPage() {
                   alt="OpenBioCure Logo" 
                   className="h-6 w-6"
                 />
-                <span className="text-lg font-bold">OpenBioCure™</span>
+                <span className="text-brand font-bold" style={{ fontSize: 'var(--font-size-brand)', lineHeight: '1' }}>OpenBioCure™</span>
               </div>
-              <p className="text-gray-300 text-sm">
+              <p className="text-footer text-text-tertiary">
                 AI-powered biomedical research platform with evidence-backed insights.
               </p>
-              <p className="text-gray-400 text-xs mt-2">
-                Prototype Stage - Building & Seeking Pilot Partners
+              <p className="text-footer text-text-tertiary mt-2">
+                Pilot Stage - Seeking Strategic Partners & Investment
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Platform</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#solution" className="hover:text-white transition-colors">Solution</a></li>
+              <h4 className="font-medium mb-4 text-text-white">Platform</h4>
+              <ul className="space-y-2 text-footer text-text-tertiary">
+                <li><a href="#product" className="hover:text-text-white transition-colors">Product</a></li>
+                <li><a href="#demo" className="hover:text-text-white transition-colors">Demo</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              <h4 className="font-medium mb-4 text-text-white">Company</h4>
+              <ul className="space-y-2 text-footer text-text-tertiary">
+                <li><a href="#product" className="hover:text-text-white transition-colors">About Us</a></li>
+                <li><a href="#contact" className="hover:text-text-white transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <h4 className="font-medium mb-4 text-text-white">Contact</h4>
+              <ul className="space-y-2 text-footer text-text-tertiary">
                 <li>
-                  <a href="mailto:info@openbiocure.ai" className="hover:text-white transition-colors">
+                  <a href="mailto:info@openbiocure.ai" className="hover:text-text-white transition-colors">
                     info@openbiocure.ai
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/20 pt-8">
+          <div className="border-t border-text-tertiary/20 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-gray-300">© 2026 OpenBioCure™. All rights reserved.</p>
-              <div className="flex gap-6 text-base">
-                <a href="/privacy-policy" className="text-white hover:text-obc-cyan transition-colors underline">
+              <p className="text-footer text-text-tertiary">© 2026 OpenBioCure™. All rights reserved.</p>
+              <div className="flex gap-6 text-footer">
+                <a href="/privacy-policy" className="text-text-white hover:text-accent-primary transition-colors underline">
                   Privacy Policy
                 </a>
-                <a href="/terms-of-conditions" className="text-white hover:text-obc-cyan transition-colors underline">
+                <a href="/terms-of-conditions" className="text-text-white hover:text-accent-primary transition-colors underline">
                   Terms & Conditions
                 </a>
               </div>

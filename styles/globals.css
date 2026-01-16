@@ -2,46 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Color Variables */
+/* Design System Tokens - CSS Custom Properties */
 :root {
-  /* Primary Colors */
-  --primary-100: #0F2A44;
-  --primary-80: #13416D;
-  --primary-60: #246AAD;
-  --primary-40: #0972D7;
-  --primary-20: #B4D8FA;
-  --primary-10: #EFF6FF;
+  /* Typography - Font Families */
+  --font-family-primary: 'IBM Plex Sans', sans-serif;
+  --font-family-brand: 'Inter', 'IBM Plex Sans', sans-serif;
 
-  /* Secondary Colors */
-  --secondary-100: #2FA4A9;
-  --secondary-80: #41D0D6;
-  --secondary-60: #5BECF3;
-  --secondary-40: #7DF9FF;
-  --secondary-20: #A3FBFF;
-  --secondary-10: #E9FEFF;
+  /* Typography - Font Sizes */
+  --font-size-h1: 30px;
+  --font-size-h2: 18px;
+  --font-size-brand: 32px;
+  --font-size-body-large: 18px;
+  --font-size-body: 14px;
+  --font-size-button: 16px;
+  --font-size-button-small: 14px;
+  --font-size-footer: 12px;
 
-  /* Alert & Status Colors */
-  --success: #12D18E;
-  --warning: #FFC832;
-  --error: #F54141;
+  /* Typography - Font Weights */
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
 
-  /* Greyscale */
-  --gray-900: #212121;
-  --gray-800: #424242;
-  --gray-700: #616161;
-  --gray-600: #757575;
-  --gray-500: #9E9E9E;
-  --gray-400: #BDBDBD;
-  --gray-300: #E0E0E0;
-  --gray-200: #EEEEEE;
-  --gray-100: #F5F5F5;
-  --white: #FFFFFF;
+  /* Typography - Line Heights */
+  --line-height-h1: 40px;
+  --line-height-h2: 20px;
+  --line-height-body-large: 24px;
+  --line-height-body: 18px;
+  --line-height-button: 20px;
 
-  /* Border Colors */
-  --border-default: #E1E4EA;
-  --border-light: #E1EBF4;
+  /* Colors - Background */
+  --color-bg-black: #000000;
+  --color-bg-white: #ffffff;
+  --color-bg-gray-100: #f5f5f5;
+  --color-bg-gray-50: #fafafa;
 
-  /* Background Colors */
-  --bg-light: #F2F5F8;
-  --bg-white: #FFFFFF;
+  /* Colors - Text */
+  --color-text-primary: #212121;
+  --color-text-secondary: #616161;
+  --color-text-tertiary: #757575;
+  --color-text-placeholder: #9e9e9e;
+  --color-text-white: #ffffff;
+  --color-text-light-gray: #eeeeee;
+
+  /* Colors - Border */
+  --color-border-default: #e0e0e0;
+  --color-border-hover: #bdbdbd;
+  --color-border-focus: #2fa4a9;
+
+  /* Colors - Accent */
+  --color-accent-primary: #2fa4a9;
+  --color-accent-primary-end: #41d0d6;
+  --color-accent-link: #0972d7;
+  --color-accent-error: #f44336;
+  --color-accent-error-bg: #ffebee;
+  --color-accent-error-text: #c62828;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-xxxl: 48px;
+  --spacing-xxxxl: 64px;
+  --spacing-xxxxxl: 96px;
+  --spacing-xxxxxxl: 148px;
+
+  /* Component Dimensions */
+  --height-input: 43px;
+  --height-button: 40px;
+  --height-button-secondary: 42px;
+  --height-logo-header: 64px;
+  --width-logo: 54px;
+  --height-logo: 60px;
+
+  /* Border Radius */
+  --radius-small: 4px;
+  --radius-medium: 6px;
+  --radius-large: 8px;
+
+  /* Transitions */
+  --transition-fast: 0.1s;
+  --transition-base: 0.2s;
+
+  /* Opacity */
+  --opacity-disabled: 0.6;
+  --opacity-hover: 0.9;
+  --opacity-full: 1;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(90deg, var(--color-accent-primary) 0%, var(--color-accent-primary-end) 100%);
+  --gradient-overlay: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 70.77%, rgba(0, 0, 0, 0) 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+/* Scroll snap for screenshot sections */
+section[id="demo"],
+section[id="workspace"] {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Prevent auto-scroll to hash on page load - scroll to top */
+html {
+  scroll-padding-top: 0;
+}
+
+/* Ensure page starts at top */
+body {
+  scroll-behavior: smooth;
 }

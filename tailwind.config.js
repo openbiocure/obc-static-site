@@ -8,88 +8,101 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Original OBC Colors (keeping for backward compatibility)
+        // Design System - Background Colors
+        bg: {
+          black: '#000000',
+          white: '#ffffff',
+          'gray-100': '#f5f5f5',
+          'gray-50': '#fafafa',
+        },
+        // Design System - Text Colors
+        text: {
+          primary: '#212121',
+          secondary: '#616161',
+          tertiary: '#757575',
+          placeholder: '#9e9e9e',
+          white: '#ffffff',
+          'light-gray': '#eeeeee',
+        },
+        // Design System - Border Colors
+        border: {
+          default: '#e0e0e0',
+          hover: '#bdbdbd',
+          focus: '#2fa4a9',
+        },
+        // Design System - Accent Colors
+        accent: {
+          primary: '#2fa4a9',
+          'primary-end': '#41d0d6',
+          link: '#0972d7',
+          error: '#f44336',
+          'error-bg': '#ffebee',
+          'error-text': '#c62828',
+        },
+        // Legacy OBC Colors (backward compatibility)
         'obc-blue': '#00239C',
         'obc-dark-blue': '#001E62',
         'obc-orange': '#E76900',
         'obc-cyan': '#00A3E0',
         'obc-bg': 'rgb(249, 250, 251)',
-        
-        // New Design System - Primary Colors
-        primary: {
-          100: '#0F2A44',
-          80: '#13416D',
-          60: '#246AAD',
-          40: '#0972D7',
-          20: '#B4D8FA',
-          10: '#EFF6FF',
-        },
-        // New Design System - Secondary Colors
-        secondary: {
-          100: '#2FA4A9',
-          80: '#41D0D6',
-          60: '#5BECF3',
-          40: '#7DF9FF',
-          20: '#A3FBFF',
-          10: '#E9FEFF',
-        },
-        // Alert & Status Colors
-        alert: {
-          success: '#12D18E',
-          warning: '#FFC832',
-          error: '#F54141',
-        },
-        // Greyscale
-        gray: {
-          900: '#212121',
-          800: '#424242',
-          700: '#616161',
-          600: '#757575',
-          500: '#9E9E9E',
-          400: '#BDBDBD',
-          300: '#E0E0E0',
-          200: '#EEEEEE',
-          100: '#F5F5F5',
-          0: '#FFFFFF',
-        },
-        // Border Colors
-        border: {
-          default: '#E1E4EA',
-          light: '#E1EBF4',
-        },
-        // Background Colors
-        background: {
-          light: '#F2F5F8',
-          white: '#FFFFFF',
-        },
       },
       fontFamily: {
-        sans: ['Montserrat', 'system-ui', 'sans-serif'],
-        urbanist: ['Urbanist', 'sans-serif'],
-        lato: ['Lato', 'sans-serif'],
-        'ibm-plex': ['IBM Plex Sans', 'sans-serif'],
-        'work-sans': ['Work Sans', 'sans-serif'],
-        'dm-sans': ['DM Sans', 'sans-serif'],
+        sans: ['IBM Plex Sans', 'sans-serif'],
+        brand: ['Inter', 'IBM Plex Sans', 'sans-serif'],
       },
       fontSize: {
-        'xs': ['10px', { lineHeight: '13px' }],
-        'sm': ['12px', { lineHeight: '16px' }],
-        'base': ['14px', { lineHeight: '22px' }],
-        'lg': ['16px', { lineHeight: '26px' }],
-        'xl': ['18px', { lineHeight: '20px' }],
-        '2xl': ['20px', { lineHeight: '26px' }],
-        '3xl': ['24px', { lineHeight: '31px' }],
-        '4xl': ['30px', { lineHeight: '40px' }],
-        '5xl': ['34px', { lineHeight: '40px' }],
-        '6xl': ['48px', { lineHeight: '77px' }],
+        'h1': ['30px', { lineHeight: '40px' }],
+        'h2': ['18px', { lineHeight: '20px' }],
+        'brand': ['32px', { lineHeight: '1' }],
+        'body-large': ['18px', { lineHeight: '24px' }],
+        'body': ['14px', { lineHeight: '18px' }],
+        'button': ['16px', { lineHeight: '20px' }],
+        'button-small': ['14px', { lineHeight: '20px' }],
+        'footer': ['12px', { lineHeight: '1' }],
       },
-      letterSpacing: {
-        'tight': '-0.02em',
-        'normal': '0.06em',
-        'wide': '0.2px',
+      fontWeight: {
+        bold: 700,
+        medium: 500,
+        regular: 400,
+      },
+      spacing: {
+        'xs': '4px',
+        'sm': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'xxl': '32px',
+        'xxxl': '48px',
+        'xxxxl': '64px',
+        'xxxxxl': '96px',
+        'xxxxxxl': '148px',
       },
       borderRadius: {
-        'default': '8px',
+        'small': '4px',
+        'medium': '6px',
+        'large': '8px',
+      },
+      height: {
+        'input': '43px',
+        'button': '40px',
+        'button-secondary': '42px',
+        'logo-header': '64px',
+        'logo': '60px',
+      },
+      width: {
+        'logo': '54px',
+        'form-container': '530px',
+      },
+      letterSpacing: {
+        'link': '-0.5px',
+      },
+      opacity: {
+        'disabled': '0.6',
+        'hover': '0.9',
+      },
+      transitionDuration: {
+        'fast': '0.1s',
+        'base': '0.2s',
       },
     },
   },
