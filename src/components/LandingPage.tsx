@@ -32,7 +32,7 @@ function ProductDemoImage() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
-    lastScrollY.current = window.scrollY;
+    lastScrollY.current = window.scrollY || 0;
     
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -96,10 +96,14 @@ function WorkspaceImage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState(8);
   const [rotateY, setRotateY] = useState(20);
-  const lastScrollY = useRef(window.scrollY);
+  const lastScrollY = useRef(0);
   const scrollDirection = useRef<'up' | 'down'>('down');
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    lastScrollY.current = window.scrollY || 0;
+    
     const handleScroll = () => {
       if (!containerRef.current) return;
       

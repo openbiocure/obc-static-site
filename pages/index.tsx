@@ -2,6 +2,8 @@ import LandingPage from '../src/components/LandingPage'
 import Head from 'next/head'
 import Script from 'next/script'
 
+export const dynamic = 'force-dynamic'
+
 export default function Home() {
   return (
     <>
