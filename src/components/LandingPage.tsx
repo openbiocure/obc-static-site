@@ -196,7 +196,7 @@ export default function LandingPage() {
     try {
       // Execute reCAPTCHA v3 (invisible, runs automatically)
       let recaptchaToken = '';
-      if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+      if (RECAPTCHA_SITE_KEY && typeof window !== 'undefined' && window.grecaptcha) {
         await new Promise<void>((resolve) => {
           window.grecaptcha.ready(async () => {
             try {
@@ -204,13 +204,13 @@ export default function LandingPage() {
               resolve();
             } catch (error) {
               console.error('reCAPTCHA execute error:', error);
-              throw error;
+              // Continue without reCAPTCHA if it fails
+              resolve();
             }
           });
         });
-      } else {
-        throw new Error('reCAPTCHA not loaded');
       }
+      // If reCAPTCHA is not configured, continue without it
 
       const response = await fetch('/api/contact', {
         method: 'POST',
