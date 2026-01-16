@@ -1,5 +1,4 @@
 import { Button } from "./ui/button";
-import { Card } from "./ui/card";
 import { 
   FlaskConical, 
   Bot, 
@@ -11,7 +10,15 @@ import {
   CheckCircle2,
   BarChart3,
   Network,
-  Rocket
+  Rocket,
+  Search,
+  Brain,
+  FileCheck,
+  FileText,
+  Layers,
+  PenTool,
+  Globe,
+  CheckSquare
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
@@ -424,6 +431,81 @@ export default function LandingPage() {
                   <CheckCircle2 className="h-5 w-5 text-accent-primary" />
                   <span className="text-body font-medium text-text-primary">Workflow Management</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Workflow Section */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Precision Workflow</h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">From querying hundreds of millions of papers to writing your final manuscript, we ensure every step is grounded in peer-reviewed data.</p>
+          </div>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+            {/* Step 1: Aggregate */}
+            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4 px-4">
+              <div className="w-20 h-20 rounded-2xl bg-bg-white border-2 border-accent-primary/20 shadow-xl flex items-center justify-center text-accent-primary mb-6 transition-transform hover:scale-110">
+                <Globe className="h-10 w-10" />
+              </div>
+              <h3 className="text-text-primary text-xl font-bold mb-2">Aggregate</h3>
+              <p className="text-text-secondary text-sm">Query 200M+ medical papers via PubMed and CrossRef instantly.</p>
+            </div>
+
+            {/* Step 2: Synthesize */}
+            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4 px-4">
+              <div className="w-20 h-20 rounded-2xl bg-bg-white border-2 border-accent-primary/20 shadow-xl flex items-center justify-center text-accent-primary mb-6 transition-transform hover:scale-110">
+                <Brain className="h-10 w-10" />
+              </div>
+              <h3 className="text-text-primary text-xl font-bold mb-2">Synthesize</h3>
+              <p className="text-text-secondary text-sm">Bio-LLM identifies patterns and summarizes findings without fabrication.</p>
+            </div>
+
+            {/* Step 3: Verify */}
+            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4 px-4">
+              <div className="w-20 h-20 rounded-2xl bg-bg-white border-2 border-accent-primary/20 shadow-xl flex items-center justify-center text-accent-primary mb-6 transition-transform hover:scale-110">
+                <CheckSquare className="h-10 w-10" />
+              </div>
+              <h3 className="text-text-primary text-xl font-bold mb-2">Verify</h3>
+              <p className="text-text-secondary text-sm">Click any statement to see the original highlighted source text.</p>
+            </div>
+
+            {/* Step 4: Publish */}
+            <div className="relative z-10 flex flex-col items-center text-center md:w-1/4 px-4">
+              <div className="w-20 h-20 rounded-2xl bg-green-50 border-2 border-green-500 shadow-xl flex items-center justify-center text-green-600 mb-6 transition-transform hover:scale-110">
+                <FileText className="h-10 w-10" />
+              </div>
+              <h3 className="text-text-primary text-xl font-bold mb-2">Publish</h3>
+              <p className="text-text-secondary text-sm">Export to LaTeX, Word, or EndNote with formatted bibliographies.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Data Sources & Repositories Hero Section */}
+      <section className="py-16 bg-bg-white border-y border-border-default">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-10">
+              TRUSTED DATA SOURCES & REPOSITORIES
+            </h2>
+            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-black text-gray-800">PubMed</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-black text-gray-800">ClinicalTrials.gov</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-black text-gray-800">Europe PMC</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-black text-gray-800">arXiv.org</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-2xl font-black text-gray-800">NIH</span>
               </div>
             </div>
           </div>
