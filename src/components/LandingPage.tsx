@@ -191,7 +191,7 @@ export default function LandingPage() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
-    const RECAPTCHA_SITE_KEY = '6Lcoa0wsAAAAAF9_ziI6TjYDJRtiF5h3qZL9Uf1D';
+    const RECAPTCHA_SITE_KEY = '6Lcoa0wsAAAAAM6ek8KdgpuDwqELiSq0xt9J1TD3';
 
     try {
       // Execute reCAPTCHA v3 (invisible, runs automatically)
@@ -259,7 +259,8 @@ export default function LandingPage() {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setSubmitStatus({ type: 'error', message: 'Network error. Please try again later.' });
+      const errorMessage = error instanceof Error ? error.message : 'Network error. Please try again later.';
+      setSubmitStatus({ type: 'error', message: errorMessage.includes('reCAPTCHA') ? errorMessage : 'Network error. Please try again later.' });
     } finally {
       setIsSubmitting(false);
     }

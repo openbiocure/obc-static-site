@@ -70,7 +70,7 @@ export default function Home() {
         />
       </Head>
       <Script
-        src="https://www.google.com/recaptcha/api.js?render=6Lcoa0wsAAAAAF9_ziI6TjYDJRtiF5h3qZL9Uf1D"
+        src="https://www.google.com/recaptcha/api.js?render=6Lcoa0wsAAAAAM6ek8KdgpuDwqELiSq0xt9J1TD3"
         strategy="afterInteractive"
         onLoad={() => {
           if (typeof window !== 'undefined' && window.grecaptcha) {
