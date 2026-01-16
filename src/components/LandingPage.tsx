@@ -191,26 +191,52 @@ export default function LandingPage() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
-    const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    const RECAPTCHA_SITE_KEY = '6Lcoa0wsAAAAAF9_ziI6TjYDJRtiF5h3qZL9Uf1D';
 
     try {
       // Execute reCAPTCHA v3 (invisible, runs automatically)
       let recaptchaToken = '';
-      if (RECAPTCHA_SITE_KEY && typeof window !== 'undefined' && window.grecaptcha) {
-        await new Promise<void>((resolve) => {
+      
+      if (RECAPTCHA_SITE_KEY) {
+        if (typeof window === 'undefined' || !window.grecaptcha) {
+          // Wait for reCAPTCHA to load (max 5 seconds)
+          await new Promise<void>((resolve, reject) => {
+            const maxWait = 5000;
+            const startTime = Date.now();
+            
+            const checkRecaptcha = () => {
+              if (typeof window !== 'undefined' && window.grecaptcha) {
+                resolve();
+              } else if (Date.now() - startTime > maxWait) {
+                reject(new Error('reCAPTCHA failed to load. Please refresh the page.'));
+              } else {
+                setTimeout(checkRecaptcha, 100);
+              }
+            };
+            
+            checkRecaptcha();
+          });
+        }
+
+        // Now execute reCAPTCHA
+        await new Promise<void>((resolve, reject) => {
           window.grecaptcha.ready(async () => {
             try {
               recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' });
-              resolve();
+              if (!recaptchaToken) {
+                reject(new Error('Failed to generate reCAPTCHA token'));
+              } else {
+                resolve();
+              }
             } catch (error) {
               console.error('reCAPTCHA execute error:', error);
-              // Continue without reCAPTCHA if it fails
-              resolve();
+              reject(error);
             }
           });
         });
+      } else {
+        throw new Error('reCAPTCHA is not configured');
       }
-      // If reCAPTCHA is not configured, continue without it
 
       const response = await fetch('/api/contact', {
         method: 'POST',

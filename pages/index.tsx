@@ -69,12 +69,18 @@ export default function Home() {
           }}
         />
       </Head>
-      {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-        <Script
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-          strategy="lazyOnload"
-        />
-      )}
+      <Script
+        src="https://www.google.com/recaptcha/api.js?render=6Lcoa0wsAAAAAF9_ziI6TjYDJRtiF5h3qZL9Uf1D"
+        strategy="afterInteractive"
+        onLoad={() => {
+          if (typeof window !== 'undefined' && window.grecaptcha) {
+            console.log('reCAPTCHA loaded successfully');
+          }
+        }}
+        onError={(e) => {
+          console.error('reCAPTCHA script failed to load:', e);
+        }}
+      />
       <LandingPage />
     </>
   )
