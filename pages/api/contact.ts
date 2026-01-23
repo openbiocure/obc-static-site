@@ -88,7 +88,7 @@ export default async function handler(
       body: JSON.stringify({
         sender: {
           name: 'OpenBioCure',
-          email: 'info@openbiocure.ai', // Must be a verified sender in Brevo
+          email: 'admin@openbiocure.ai', // Must be a verified sender in Brevo
         },
         to: [
           {
